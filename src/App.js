@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
+//import {render} from 'react-dom';
 import ImageCard from './components/ImageCard';
 import ImageSearch from './components/ImageSearch';
+//import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
+//import {Root} from './components/Root';
+//import {Home} from './components/Home';
 
 
 function App() {
@@ -25,7 +29,8 @@ function App() {
   return (
     <div className="container mx-auto">
       <header className="App-header">
-        <h1 className="text-5xl mx-auto mt-20">Mesumi </h1>
+        <h1 className="font-bold text-purple-500 text-5xl mx-auto mt-20">Mesumi </h1>
+        
       </header>
 
       <ImageSearch searchText={(text=> setTerm(text))}/>
