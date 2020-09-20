@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 //import {render} from 'react-dom';
 import ImageCard from './components/ImageCard';
 import ImageSearch from './components/ImageSearch';
-//import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
-//import {Root} from './components/Root';
-//import {Home} from './components/Home';
 
+const mongoose=require('mongoose');
+
+mongoose.connect('mongodb+srv://Melani:${process.env.MONGODB_ATLAS_PW}@nwt-seminar.gobk3.mongodb.net/<dbname>?retryWrites=true&w=majority', {useMongoClient:true});
 
 function App() {
   const [images, setImages]= useState([]);
