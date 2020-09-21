@@ -1,7 +1,4 @@
 import React from 'react';
-
-const mongoose=require('mongoose');
-
 // const Acaunt= require('./Acaunt');
 
 const Login = () => (

@@ -1,0 +1,39 @@
+
+
+
+.profileHeader {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 40px;
+  background-color: #ccc;
+}
+
+.profileHeader > section {
+  display: flex;
+  flex-flow: column;
+  margin: 10px 20px;
+}
+
+.profileHeader > section > h2 {
+  font-size: 30px;
+}
+
+.profileHeader > section > h3, p {
+  font-size: 16px;
+  max-width: 500px;
+}
+
+.profileHeader > section > p {
+  margin: 20px 0;
+}
+
+.profileHeader > section > h3 {
+  font-size: 16px;
+  color: gray;
+}
+
+.profileHeader > img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}

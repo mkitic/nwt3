@@ -1,25 +1,16 @@
 import React from 'react';
+// const Acaunt= require('./Acaunt');
 
-
-export default class Signin extends React.PureComponent {
-
-    //prvi div-> className="base-conteiner"
-    
-    render(){
-        return(
+const Login = () => (
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
                 <div className="header">
-                    Signin
+                    Login
                 </div>
                 <div className="content">
                     <div className="form"> 
                         <div className="form-group">
                             <label htmlFor="username">Username</label>
                             <input type="text" name="username" placeholder="username"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="mail">Mail</label>
-                            <input type="text" name="mail" placeholder="mail"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
@@ -31,16 +22,10 @@ export default class Signin extends React.PureComponent {
                     <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 
                         text-sm border-4 text-white py-1 px-2 rounded" 
                         type="submit">
-                            Signin
+                            Logein
                         </button>    
                 
                 </div>
             </div>
-
-
-
         )
-
-    }
-
-};
+export default Login

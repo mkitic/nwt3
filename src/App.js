@@ -1,57 +1,25 @@
-import React, {useState, useEffect} from 'react';
-//import {render} from 'react-dom';
-import ImageCard from './components/ImageCard';
-import ImageSearch from './components/ImageSearch';
-//import mongoose from 'mongoose'
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Login from '../src/components/Login/Login'
-import Signin from '../src/components/Login/Signin'
-
-//const mongoose=require('mongoose');
-
-//mongoose.connect('mongodb+srv://Melani:'+process.env.MONGODB_ATLAS_PW+'@nwt-seminar.gobk3.mongodb.net/<dbname>?retryWrites=true&w=majority', {useMongoClient:true});
+import Home from './Modules/Home'
+import Login from './Modules/Login'
+import Profile from './Modules/Profile'
 
 
-function App() {
-  const [images, setImages]= useState([]);
-  const [isLoading, setIsLoading]= useState(true);
-  const [term, setTerm]= useState('');
-
-
-  useEffect(()=> {
-    fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`)
-    .then(res=> res.json())
-    .then(data=> {
-      setImages(data.hits);
-      setIsLoading(false);
-    })
-    .catch(err=> console.log(err));
-
-  }, [term]);
-
-
-  return (
-    <div className="container mx-auto">
-      <header className="App-header">
-        <h1 className="font-bold text-purple-500 text-5xl mx-auto mt-20">Mesumi </h1>
-        
-      </header>
-
-      <ImageSearch searchText={(text=> setTerm(text))}/>
-
-      {!isLoading && images.length===0 && <h1 className="text-5xl text-center mx-auto mt-32 mt-32"> NO IMAGES FOUND! </h1>}
-
-      {isLoading ? <h1 className="text-6xl text-center mx-auto mt-32 mt-32"> LOADING </h1>:      
-        <div className="grid grid-cols-3 gap-4">
-          {images.map(images=> (
-            <ImageCard key= {images.id} image={images}/>
-          ))}
-        </div>}
+const App = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/login">
         <Login />
-        <Signin />
-    </div>
-    
-  );
-}
+      </Route>
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
+    </Switch>
+  </Router>
+)
 
 export default App;
