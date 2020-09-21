@@ -2,11 +2,15 @@ import React, {useState, useEffect} from 'react';
 //import {render} from 'react-dom';
 import ImageCard from './components/ImageCard';
 import ImageSearch from './components/ImageSearch';
+//import mongoose from 'mongoose'
 
+import Login from '../src/components/Login/Login'
+import Signin from '../src/components/Login/Signin'
 
-const mongoose=require('mongoose');
+//const mongoose=require('mongoose');
 
-mongoose.connect('mongodb+srv://Melani:${process.env.MONGODB_ATLAS_PW}@nwt-seminar.gobk3.mongodb.net/<dbname>?retryWrites=true&w=majority', {useMongoClient:true});
+//mongoose.connect('mongodb+srv://Melani:'+process.env.MONGODB_ATLAS_PW+'@nwt-seminar.gobk3.mongodb.net/<dbname>?retryWrites=true&w=majority', {useMongoClient:true});
+
 
 function App() {
   const [images, setImages]= useState([]);
@@ -43,7 +47,8 @@ function App() {
             <ImageCard key= {images.id} image={images}/>
           ))}
         </div>}
-
+        <Login />
+        <Signin />
     </div>
     
   );

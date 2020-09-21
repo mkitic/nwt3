@@ -1,11 +1,7 @@
 import React from 'react';
 
 
-export class Signin {
-
-    constructor(props){
-        super(props);
-    }
+export default class Signin extends React.PureComponent {
 
     //prvi div-> className="base-conteiner"
     
