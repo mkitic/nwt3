@@ -2,18 +2,9 @@ import React from 'react';
 
 const mongoose=require('mongoose');
 
-const Acaunt= require('./Acaunt');
+// const Acaunt= require('./Acaunt');
 
-export class Login {
-
-    constructor(props){
-        super(props);
-    }
-
-    //prvi div-> className="base-conteiner"
-    
-    render(){
-        return(
+const Login = () => (
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
                 <div className="header">
                     Login
@@ -39,11 +30,5 @@ export class Login {
                 
                 </div>
             </div>
-
-
-
         )
-
-    }
-
-};
+export default Login
