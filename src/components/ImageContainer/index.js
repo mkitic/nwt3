@@ -2,22 +2,23 @@ import React, {useState, useEffect} from 'react';
 
 import ImageCard from '../../components/ImageCard';
 import ImageSearch from '../../components/ImageSearch';
+import {api} from '../../helper'
 
-const ImageContainer = ({search, url}) => {
+const ImageContainer = ({search, url, local = false}) => {
   const [images, setImages]= useState([]);
   const [isLoading, setIsLoading]= useState(true);
   const [term, setTerm]= useState('');
 
 
   useEffect(()=> {
-    fetch(url)
-    .then(res=> res.json())
-    .then(data=> {
-      setImages(data.hits);
+    api.[local ? 'get' : 'rawGet'](url)
+    .then(res=> {
+      setImages(res[local ? 'data' : 'hits']);
       setIsLoading(false);
     })
     .catch(err=> console.log(err));
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [term, url]);
 
 

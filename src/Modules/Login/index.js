@@ -1,31 +1,52 @@
-import React from 'react';
-// const Acaunt= require('./Acaunt');
+import React, { useState } from 'react';
 
-const Login = () => (
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                <div className="header">
-                    Login
-                </div>
-                <div className="content">
-                    <div className="form"> 
-                        <div className="form-group">
-                            <label htmlFor="username">Username</label>
-                            <input type="text" name="username" placeholder="username"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" name="password" placeholder="password"/>
-                        </div>
-                    </div>
-                </div>
-                <div className="footer">
-                    <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 
-                        text-sm border-4 text-white py-1 px-2 rounded" 
-                        type="submit">
-                            Logein
-                        </button>    
-                
-                </div>
-            </div>
-        )
+import styles from './style.module.css'
+import { api, setToken } from '../../helper'
+import Spinner from '../../components/Spinner'
+import {useHistory} from 'react-router-dom'
+
+const Login = () => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
+    let history = useHistory()
+
+    const login = async (username, password) => {
+        setLoading(true)
+        setError(false)
+        await api.post('profile/auth', {
+        username,
+        password
+    }).then(res => {
+        console.log(res)
+        if (res.code !== 200) {
+            setError(res.data.message)
+        } else {
+        setToken(res.data.token)
+        history.push('/profile')
+        }
+    })
+    .catch(console.error)
+    .finally(() => setLoading(false))
+}
+
+    return(
+        <main className={styles.main}>
+            <h1>Login</h1>
+            <label>
+                Username
+            </label>
+            <input type="text" onChange={(e) => setUsername(e.target.value)} />
+            <label>
+                Password
+            </label>
+            <input type="password" onChange={(e) => setPassword(e.target.value)} />
+            <button className="" onClick={() => login(username, password)}>
+                {loading ? <Spinner /> : 'Login'}
+            </button>
+            {error && <p style={{color: 'red', margin: '0 auto'}}>{error}</p>}
+        </main>)
+    }
+
 export default Login

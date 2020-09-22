@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <ImageContainer search url={`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${''}&image_type=photo&pretty=true`} />
+      <ImageContainer useAuth={false} search url={`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${''}&image_type=photo&pretty=true`} />
     </>
   )
 }
