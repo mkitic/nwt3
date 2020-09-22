@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import styles from './style.module.css'
-import { api, setToken } from '../../helper'
+import { api, setToken, isLoggedIn } from '../../helper'
 import Spinner from '../../components/Spinner'
 import {useHistory} from 'react-router-dom'
 
@@ -12,6 +12,12 @@ const Login = () => {
     const [error, setError] = useState('')
     let history = useHistory()
 
+    if (isLoggedIn()) {
+        // destroy local storage
+        localStorage.clear()
+        history.replace('/login')
+    }
+
     const login = async (username, password) => {
         setLoading(true)
         setError(false)
@@ -19,12 +25,11 @@ const Login = () => {
         username,
         password
     }).then(res => {
-        console.log(res)
         if (res.code !== 200) {
             setError(res.data.message)
         } else {
         setToken(res.data.token)
-        history.push('/profile')
+        history.replace('/profile')
         }
     })
     .catch(console.error)

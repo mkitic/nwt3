@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main h1 {
+  font-size: 34px;
+  color: rgba(131, 36, 255, 1);
+  cursor: pointer;
+}
+
+.main h3 {
+  font-size: 30px;
+  color: rgba(131, 36, 255, 0.6);
+  cursor: pointer;
+}

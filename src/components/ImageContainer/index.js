@@ -5,9 +5,10 @@ import ImageSearch from '../../components/ImageSearch';
 import {api} from '../../helper'
 
 const ImageContainer = ({search, url, local = false}) => {
-  const [images, setImages]= useState([]);
-  const [isLoading, setIsLoading]= useState(true);
-  const [term, setTerm]= useState('');
+  const [images, setImages]= useState([])
+  const [isLoading, setIsLoading]= useState(true)
+  const [listChanged, setListChanged] = useState(false)
+  const [term, setTerm]= useState('')
 
 
   useEffect(()=> {
@@ -16,17 +17,14 @@ const ImageContainer = ({search, url, local = false}) => {
       setImages(res[local ? 'data' : 'hits']);
       setIsLoading(false);
     })
-    .catch(err=> console.log(err));
+    .catch(err=> console.error(err));
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [term, url]);
+  }, [term, url, listChanged]);
 
 
   return (
     <div className="container mx-auto">
-      {/*<header className="App-header">
-        <h1 className="font-bold text-purple-500 text-5xl mx-auto mt-20">Mesumi </h1>
-      </header>*/}
 
       {search && <ImageSearch searchText={(text=> setTerm(text))}/>}
 
@@ -35,7 +33,7 @@ const ImageContainer = ({search, url, local = false}) => {
       {isLoading ? <h1 className="text-6xl text-center mx-auto mt-32 mt-32"> LOADING </h1>:      
         <div className="grid grid-cols-3 gap-4">
           {images.map(images=> (
-            <ImageCard key= {images.id} image={images}/>
+            <ImageCard key= {images.id} image={images} local={local} onChange={setListChanged}/>
           ))}
         </div>}
     </div>

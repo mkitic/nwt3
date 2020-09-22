@@ -1,5 +1,3 @@
-import { findRenderedDOMComponentWithTag } from "react-dom/test-utils"
-
 export const getStorageItem = key => {
   return JSON.parse(localStorage.getItem(key))
 }
@@ -9,9 +7,10 @@ export const setStoreItem = (key, value) => {
 }
 
 export const isLiked = imageId => {
-  const profile = JSON.parse(localStorage.getItem('profile'))
-  if (profile) {
-    return !!(profile.likedPosts.find(el => el.id === imageId))
+  const likes = JSON.parse(localStorage.getItem('currentLikes'))
+  if (likes) {
+    console.log(imageId)
+    return !!(likes.find(el => el.id === imageId))
   } else {
     return false
   }
@@ -32,6 +31,7 @@ export const api = {
     method: 'post',
     body: JSON.stringify(body),
     headers: {
+      "Content-Type": "application/json",
       "Authorization": useAuth ? `Bearer ${getToken()}` : undefined
     }
   }).then(res => res.json()),
