@@ -8,7 +8,6 @@ const ImageContainer = ({search, url, local = false}) => {
   const [images, setImages]= useState([])
   const [isLoading, setIsLoading]= useState(true)
   const [listChanged, setListChanged] = useState(false)
-  const [term, setTerm]= useState('')
 
 
   useEffect(()=> {
@@ -18,15 +17,13 @@ const ImageContainer = ({search, url, local = false}) => {
       setIsLoading(false);
     })
     .catch(err=> console.error(err));
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [term, url, listChanged]);
+  }, [url, listChanged, local]);
 
 
   return (
     <div className="container mx-auto">
 
-      {search && <ImageSearch searchText={(text=> setTerm(text))}/>}
+      {search && <ImageSearch searchText={(text=> search(text))}/>}
 
       {!isLoading && images.length===0 && <h1 className="text-5xl text-center mx-auto mt-32 mt-32"> NO IMAGES FOUND! </h1>}
 
