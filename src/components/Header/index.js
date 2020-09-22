@@ -10,13 +10,13 @@ export default function Header () {
     const onProfile = history.location.pathname === '/profile' 
 
     return (
-        <header className={style.main} style={{width: onProfile || !isLoggedIn() ? '70%' : '100%' }}>
-            <h3 className={style.login} onClick={() => isLoggedIn() ? localStorage.clear() | history.push('/') : history.push('/login')}>
+        <header className={style.main} style={{width: !isLoggedIn() ? '70%' : '100%' }}>
+            <h3 className={style.login} onClick={() => isLoggedIn() ? localStorage.clear() | history.replace('/login') : history.push('/login')}>
                 {isLoggedIn() ? 'Logout' : 'Login'}
             </h3>
             <h1 onClick={() => history.push('/')}>Mesumi </h1>
             {
-              (isLoggedIn() && !onProfile) && <h3 onClick={() => history.push('/profile')}> Profile </h3>
+              isLoggedIn() && <h3 onClick={() => history.push(onProfile ? '/edit' : '/profile')}> {onProfile ? 'Edit' : 'Profile'} </h3>
             }
         </header>
     )

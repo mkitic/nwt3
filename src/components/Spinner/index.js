@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import s from './style.module.css'
 
-const Spinner = () =>
-  <div className={`${s['lds-ellipsis']} ${s.center}`}>
+const Spinner = ({styleProp, center, purple}) =>
+  <div className={`${s['lds-ellipsis']} ${center ? s.center : ''} ${purple ? s.purple : ''}`}>
     <div>
     </div>
     <div>

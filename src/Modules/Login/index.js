@@ -48,7 +48,7 @@ const Login = () => {
             </label>
             <input type="password" onChange={(e) => setPassword(e.target.value)} />
             <button className="" onClick={() => login(username, password)}>
-                {loading ? <Spinner /> : 'Login'}
+                {loading ? '....' : 'Login'}
             </button>
             {error && <p style={{color: 'red', margin: '0 auto'}}>{error}</p>}
         </main>)

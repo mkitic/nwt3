@@ -16,7 +16,7 @@ export const isLiked = imageId => {
   }
 }
 
-export const getToken = () => getStorageItem('user').token
+export const getToken = () => getStorageItem('user')?.token
 
 export const setToken = (token) => {
   localStorage.setItem('user', JSON.stringify({token: token}))
