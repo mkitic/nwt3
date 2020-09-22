@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
-import ImageCard from '../../components/ImageCard';
-import ImageSearch from '../../components/ImageSearch';
+import ImageCard from './ImageCard'
+import ImageSearch from './ImageSearch'
 import {api} from '../../helper'
 
 const ImageContainer = ({search, url, local = false}) => {

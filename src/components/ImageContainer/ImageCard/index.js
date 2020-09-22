@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import emptyHeart from '../assets/emptyHeart.png'
-import redHeart from '../assets/redHeart.png'
-import AuthProtect from './AuthProtect'
-import {api} from '../helper'
+import emptyHeart from '../../../assets/emptyHeart.png'
+import redHeart from '../../../assets/redHeart.png'
+import AuthProtect from '../../AuthProtect'
+import {api} from '../../../helper'
 import { writeStorage, useLocalStorage } from '@rehooks/local-storage'
 
 const ImageCard=({image, local, onChange})=> {

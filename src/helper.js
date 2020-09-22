@@ -45,4 +45,12 @@ export const api = {
   rawGet: (path) => fetch(path, {
     method: 'get',
   }).then(res => res.json()),
+  put: (path, body, useAuth = false) => fetch(`${process.env.REACT_APP_API_URL}/${path}`, {
+    method: 'put',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": useAuth ? `Bearer ${getToken()}` : undefined
+    }
+  }).then(res => res.json()),
 }
